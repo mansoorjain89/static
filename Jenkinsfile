@@ -4,7 +4,7 @@ pipeline {
         stage('Upload to AWS') {
             steps {
                 withAWS(credentials: 'aws-static', region: 'us-east-2') {
-                    sh 'aws iam get-user'
+                    s3Upload(file:'index.html', bucket:'bucketforjenkis', path:'index.html')
                 }
             }
         }
